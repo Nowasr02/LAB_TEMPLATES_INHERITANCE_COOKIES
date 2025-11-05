@@ -6,5 +6,5 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("properties/", views.properties, name="properties"),
     path("contact/", views.contact, name="contact"),
-    path('toggle_dark_mode/', views.toggle_dark_mode, name='toggle_dark_mode'),
+    path('dark_mode/', views.dark_mode, name='dark_mode'),
 ]

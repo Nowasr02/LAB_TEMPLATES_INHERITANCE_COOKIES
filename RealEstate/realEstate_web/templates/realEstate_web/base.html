@@ -15,16 +15,16 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 
-<body class="{% if request.session.dark_mode|default:False %}dark-mode{% endif %}">
+<body class=" {% if request.COOKIES.theme|default:'light' == 'dark' %}class='dark'{% endif %}">
 
     <div class="header-wrapper">
         <a href="/" class="logo">HOME</a>
         <nav>
-            <div class="nav-item"><a href="/">Home</a></div>
-            <div class="nav-item"><a href="properties/">Properties</a></div>
+            <div class="nav-item"><a href="{% url 'main:home' %}">Home</a></div>
+            <div class="nav-item"><a href="{% url 'main:properties' %}">Properties</a></div>
             <div class="nav-item"><a href="#">Services</a></div>
             <div class="nav-item"><a href="#">About</a></div>
-            <div class="nav-item"><a href="contact/">Contact</a></div>
+            <div class="nav-item"><a href="{% url 'main:contact' %}">Contact</a></div>
         </nav>
 
 
@@ -36,7 +36,8 @@
             <span class="material-symbols-outlined">light_mode</span>
 
 
-            <span class="material-symbols-outlined" id="darkToggle">dark_mode</span>
+            <a href="{% url 'main:dark_mode' %}"><span class="material-symbols-outlined"
+                    id="darkToggle">dark_mode</span></a>
         </div>
 
     </div>

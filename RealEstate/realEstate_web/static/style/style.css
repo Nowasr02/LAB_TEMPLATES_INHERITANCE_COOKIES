@@ -165,15 +165,6 @@ h1 {
   font-weight: 450;
 }
 
-.nav-link[data-color] .icon {
-  background: color-mix(in srgb, var(--c, #ddd) 14%, white);
-  color: var(--c, #333);
-}
-
-.nav-link[data-color] {
-  --c: attr(data-color color);
-}
-
 /*Properties page styling*/
 
 body.properties-page {
@@ -272,12 +263,18 @@ body.properties-page {
 
 .contact-wrap {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  align-items: left;
+  
   margin-left: 8rem;
   margin-bottom: 10rem;
   gap: 3rem;
+}
+
+.left-contact{
+  display: flex;
+
 }
 
 .contact-info {
@@ -290,4 +287,13 @@ body.properties-page {
   width: 600;
   height: 500;
   border: 0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.maps iframe {
+  border-radius: 1rem;
+}
+

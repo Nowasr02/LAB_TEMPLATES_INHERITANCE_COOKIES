@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 
 def home(request : HttpRequest):
@@ -15,10 +15,10 @@ def contact(request : HttpRequest):
     
     return render(request, "realEstate_web/contact.html")
 
-def toggle_dark_mode(request : HttpRequest):
-
-    current = request.session.get('dark_mode', False)
-    request.session['dark mode'] = not current
-    messages.success(request, 'Dark mode preference updated. ')
+def dark_mode(request : HttpRequest):
+    current = request.COOKIES.get('theme', 'light')
+    mode='dark' if current == 'light' else 'light'
+    response= redirect(request.META.get('HTTP_REFERER', '/'))
+    response.set_cookie("theme", "dark", max_age=60*60)
     
-    return redirect('/')
+    return response    
